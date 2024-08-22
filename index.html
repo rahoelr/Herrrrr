@@ -1154,10 +1154,33 @@
         x.play();
       }
       playOpening();
+
+      window.addEventListener("load", function () {
+        const audio = document.getElementById("backgroundMusic");
+
+        // Simulate a click on the body to trigger audio play
+        document.body.click();
+
+        // Attempt to play the audio
+        audio.play().catch((error) => {
+          console.log("Autoplay prevented:", error);
+        });
+
+        // Additionally, listen for any real user interaction to start the audio if it was blocked
+        document.body.addEventListener(
+          "click",
+          function () {
+            audio.play().catch((error) => {
+              console.log("Autoplay still prevented after user click:", error);
+            });
+          },
+          { once: true }
+        ); // Listen only once
+      });
     </script>
-    <audio autoplay loop>
+    <audio id="backgroundMusic" loop>
       <source src="musik.mp3" type="audio/mpeg" />
-      Browser Anda tidak mendukung elemen audio.
+      Your browser does not support the audio element.
     </audio>
   </body>
 </html>
