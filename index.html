@@ -19,16 +19,80 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-	<link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Poor+Story"
+      rel="stylesheet"
+    />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <style type="text/css">
       .wrapper {
         width: 100%;
+        padding: 0 1rem; /* Kurangi padding pada layar kecil */
+        text-align: center;
+        font-family: "Poor Story", cursive;
+      }
+
+      .polaroid {
+        background: #fff;
+        padding: 0.5rem; /* Kurangi padding pada layar kecil */
+        box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
+      }
+
+      .caption {
+        font-size: 1.2rem; /* Kurangi ukuran font caption pada layar kecil */
+        line-height: 1.5em;
+      }
+
+      .item {
+        width: 100%; /* Lebar penuh pada layar kecil */
+        display: block; /* Gunakan block display pada layar kecil */
+        margin-top: 1rem; /* Kurangi margin atas pada layar kecil */
+        filter: grayscale(100%);
+      }
+
+      /* Media Queries untuk layar kecil */
+      @media (max-width: 768px) {
+        .modal-dialog {
+          margin: 1.75rem; /* Margin lebih kecil pada layar kecil */
+        }
+
+        .item {
+          width: 100%;
+          margin-top: 1rem;
+        }
+
+        .item .polaroid:before {
+          height: 15%;
+          width: 40%;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .modal-dialog {
+          margin: 0; /* Menghilangkan margin pada layar sangat kecil */
+        }
+
+        .item {
+          width: 100%;
+          margin-top: 1rem;
+        }
+
+        .polaroid {
+          padding: 0.5rem; /* Kurangi padding polaroid pada layar sangat kecil */
+        }
+
+        .caption {
+          font-size: 1rem; /* Kurangi ukuran font caption pada layar sangat kecil */
+        }
+      }
+
+      .wrapper {
+        width: 100%;
         padding: 0 2rem;
         text-align: center;
-		font-family: 'Poor Story', cursive;
+        font-family: "Poor Story", cursive;
       }
 
       .polaroid {
@@ -1339,124 +1403,126 @@
       Your browser does not support the audio element.
     </audio>
 
-	<div
-	class="modal fade"
-	id="exampleModal"
-	tabindex="-1"
-	aria-labelledby="exampleModalLabel"
-	aria-hidden="true"
-  >
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Potret Herlina</h5>
-		  <button
-			type="button"
-			class="btn-close"
-			data-bs-dismiss="modal"
-			aria-label="Close"
-		  ></button>
-		</div>
-		<div class="modal-body">
-			<div class="wrapper">
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_1.jpeg" />
-					<div class="caption">Bersama Sahabat Karib</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_2.jpeg" />
-					<div class="caption">Menonton Bola Bersama Bocil di Rabo</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_3.jpeg" />
-					<div class="caption">After Fesnas</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_4.jpeg" />
-					<div class="caption">Herlina sebelum membuat nangis adek nopal</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_5.jpeg" />
-					<div class="caption">Bersih-bersih pantai</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_6.jpeg" />
-					<div class="caption">Bersama Sapennn</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_7.jpeg" />
-					<div class="caption">Herlina, Bocil Lamteng, dan Muka Lembu</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_8.jpeg" />
-					<div class="caption">Perjalanan ke Pelabuhan</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_9.jpeg" />
-					<div class="caption">Apaa yaaa</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_10.jpeg" />
-					<div class="caption">Bersama Sahabat Karib 2</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_11.jpeg" />
-					<div class="caption">Jalan Jalan Sore</div>
-				  </div>
-				</div>
-			  
-				<div class="item">
-				  <div class="polaroid">
-					<img src="img/img_12.jpeg" />
-					<div class="caption">Bonus Nopal</div>
-				  </div>
-				</div>
-			  </div>
-			  
-		</div>
-		<div class="modal-footer">
-		  <button
-			type="button"
-			class="btn btn-secondary"
-			data-bs-dismiss="modal"
-		  >
-			Close
-		  </button>
-		</div>
-	  </div>
-	</div>
-  </div>
-  
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Potret Herlina</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="wrapper">
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_1.jpeg" />
+                  <div class="caption">Bersama Sahabat Karib</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_2.jpeg" />
+                  <div class="caption">Menonton Bola Bersama Bocil di Rabo</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_3.jpeg" />
+                  <div class="caption">After Fesnas</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_4.jpeg" />
+                  <div class="caption">
+                    Herlina sebelum membuat nangis adek nopal
+                  </div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_5.jpeg" />
+                  <div class="caption">Bersih-bersih pantai</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_6.jpeg" />
+                  <div class="caption">Bersama Sapennn</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_7.jpeg" />
+                  <div class="caption">
+                    Herlina, Bocil Lamteng, dan Muka Lembu
+                  </div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_8.jpeg" />
+                  <div class="caption">Perjalanan ke Pelabuhan</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_9.jpeg" />
+                  <div class="caption">Apaa yaaa</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_10.jpeg" />
+                  <div class="caption">Bersama Sahabat Karib 2</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_11.jpeg" />
+                  <div class="caption">Jalan Jalan Sore</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="polaroid">
+                  <img src="img/img_12.jpeg" />
+                  <div class="caption">Bonus Nopal</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
