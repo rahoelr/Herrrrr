@@ -15,7 +15,127 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.css"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+	<link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <style type="text/css">
+      .wrapper {
+        width: 100%;
+        padding: 0 2rem;
+        text-align: center;
+		font-family: 'Poor Story', cursive;
+      }
+
+      .polaroid {
+        background: #fff;
+        padding: 1rem;
+        box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
+      }
+
+      .polaroid > img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .caption {
+        font-size: 1.8rem;
+        text-align: center;
+        line-height: 2em;
+      }
+
+      .item {
+        width: 30%;
+        display: inline-block;
+        margin-top: 2rem;
+        filter: grayscale(100%);
+      }
+
+      .item .polaroid:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        transition: all 0.35s;
+      }
+
+      .item:nth-of-type(4n + 1) {
+        transform: scale(0.8, 0.8) rotate(5deg);
+        transition: all 0.35s;
+      }
+
+      .item:nth-of-type(4n + 1) .polaroid:before {
+        transform: rotate(6deg);
+        height: 20%;
+        width: 47%;
+        bottom: 30px;
+        right: 12px;
+        box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.4);
+      }
+
+      .item:nth-of-type(4n + 2) {
+        transform: scale(0.8, 0.8) rotate(-5deg);
+        transition: all 0.35s;
+      }
+
+      .item:nth-of-type(4n + 2) .polaroid:before {
+        transform: rotate(-6deg);
+        height: 20%;
+        width: 47%;
+        bottom: 30px;
+        left: 12px;
+        box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.4);
+      }
+
+      .item:nth-of-type(4n + 4) {
+        transform: scale(0.8, 0.8) rotate(3deg);
+        transition: all 0.35s;
+      }
+
+      .item:nth-of-type(4n + 4) .polaroid:before {
+        transform: rotate(4deg);
+        height: 20%;
+        width: 47%;
+        bottom: 30px;
+        right: 12px;
+        box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.3);
+      }
+
+      .item:nth-of-type(4n + 3) {
+        transform: scale(0.8, 0.8) rotate(-3deg);
+        transition: all 0.35s;
+      }
+
+      .item:nth-of-type(4n + 3) .polaroid:before {
+        transform: rotate(-4deg);
+        height: 20%;
+        width: 47%;
+        bottom: 30px;
+        left: 12px;
+        box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.3);
+      }
+
+      .item:hover {
+        filter: none;
+        transform: scale(1, 1) rotate(0deg) !important;
+        transition: all 0.35s;
+      }
+
+      .item:hover .polaroid:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        transform: rotate(0deg);
+        height: 90%;
+        width: 90%;
+        bottom: 0%;
+        right: 5%;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+        transition: all 0.35s;
+      }
       body {
         overflow: hidden;
         background: black;
@@ -144,7 +264,7 @@
       .ucapan {
         font-size: 30pt;
         left: 50%;
-		margin-top: 10px;
+        margin-top: 10px;
         bottom: 50%;
         text-align: center;
         transform: translate(-50%, calc(50% + 100px));
@@ -502,18 +622,42 @@
     <div class="container">
       <div class="quotes">
         <p id="quotation"></p>
-        <button style="
-                display: block;
-                margin: 20px auto;
-                padding: 10px 20px;
-                font-size: 16px;
-                color: #fff;
-                background-color: #0079FF;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                text-align: center;
-            " onclick="handleButtonClick()">Click To Play Music !</button>
+        <button
+          style="
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #0079ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+          "
+          onclick="handleButtonClick()"
+        >
+          Click To Play Music
+        </button>
+        <button
+          style="
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff5722;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+          "
+          onclick="openGallery()"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Click To Open Gallery
+        </button>
       </div>
       <ul class="kotak">
         <li></li>
@@ -1194,5 +1338,125 @@
       <source src="musik_3.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
+
+	<div
+	class="modal fade"
+	id="exampleModal"
+	tabindex="-1"
+	aria-labelledby="exampleModalLabel"
+	aria-hidden="true"
+  >
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Potret Herlina</h5>
+		  <button
+			type="button"
+			class="btn-close"
+			data-bs-dismiss="modal"
+			aria-label="Close"
+		  ></button>
+		</div>
+		<div class="modal-body">
+			<div class="wrapper">
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_1.jpeg" />
+					<div class="caption">Bersama Sahabat Karib</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_2.jpeg" />
+					<div class="caption">Menonton Bola Bersama Bocil di Rabo</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_3.jpeg" />
+					<div class="caption">After Fesnas</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_4.jpeg" />
+					<div class="caption">Herlina sebelum membuat nangis adek nopal</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_5.jpeg" />
+					<div class="caption">Bersih-bersih pantai</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_6.jpeg" />
+					<div class="caption">Bersama Sapennn</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_7.jpeg" />
+					<div class="caption">Herlina, Bocil Lamteng, dan Muka Lembu</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_8.jpeg" />
+					<div class="caption">Perjalanan ke Pelabuhan</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_9.jpeg" />
+					<div class="caption">Apaa yaaa</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_10.jpeg" />
+					<div class="caption">Bersama Sahabat Karib 2</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_11.jpeg" />
+					<div class="caption">Jalan Jalan Sore</div>
+				  </div>
+				</div>
+			  
+				<div class="item">
+				  <div class="polaroid">
+					<img src="img/img_12.jpeg" />
+					<div class="caption">Bonus Nopal</div>
+				  </div>
+				</div>
+			  </div>
+			  
+		</div>
+		<div class="modal-footer">
+		  <button
+			type="button"
+			class="btn btn-secondary"
+			data-bs-dismiss="modal"
+		  >
+			Close
+		  </button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
   </body>
 </html>
