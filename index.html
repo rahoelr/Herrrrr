@@ -547,6 +547,49 @@
           font-size: 10pt;
         }
       }
+
+      #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Latar belakang semi transparan */
+        backdrop-filter: blur(10px); /* Efek blur */
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .loading-gif {
+        width: 200px; /* Atur ukuran yang lebih besar */
+        height: auto;
+      }
+
+      /* Spinner loading */
+      .spinner {
+        border: 8px solid rgba(255, 255, 255, 0.3);
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body onload="init()">
@@ -1397,11 +1440,24 @@
           { once: true }
         ); // Listen only once
       });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tampilkan overlay selama 3 detik
+        setTimeout(function () {
+          // Hapus overlay blur dan tampilkan konten utama
+          document.getElementById("loading-overlay").style.display = "none";
+          document.getElementById("main-content").style.display = "block";
+        }, 4000); // 3000ms = 3 detik
+      });
     </script>
     <audio id="backgroundMusic" loop>
       <source src="musik_3.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
+
+    <div id="loading-overlay">
+      <img src="gojo.gif" alt="Loading..." class="loading-gif" />
+    </div>
 
     <div
       class="modal fade"
