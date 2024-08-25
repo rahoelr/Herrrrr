@@ -1635,9 +1635,13 @@
 
 
 <style>
-  @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
+  /* @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy"); */
   
-/* BODY */
+  @font-face {
+  font-family: 'Copyduck';
+  src: url('fonts/copyduck.ttf') format('truetype');
+}
+
 body {
   position: absolute;
   top: 0;
@@ -1651,7 +1655,7 @@ body {
   background-attachment: fixed;
   background-size: 100% 100%;
   overflow: hidden;
-  font-family: "Luckiest Guy", cursive;
+  font-family: 'Copyduck', cursive;
   -webkit-font-smoothing: antialiased;
 }
 
